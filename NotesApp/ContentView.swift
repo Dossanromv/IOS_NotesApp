@@ -7,14 +7,28 @@
 
 import SwiftUI
 
+
+struct Note: Identifiable {
+    let id = UUID()
+    var title: String
+    var text: String
+}
+
 struct ContentView: View {
+    
+    
+@State private var notes: [Note] = []
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach(notes) { note in
+                    Text(note.title)
+                }
+            }
+            
         }
+        .navigationTitle("Notes")
         .padding()
     }
 }
