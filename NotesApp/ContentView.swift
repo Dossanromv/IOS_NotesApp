@@ -26,9 +26,17 @@ struct ContentView: View {
                     Text(note.title)
                 }
             }
-            
+            .navigationTitle("Notes")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        notes.append(Note(title: "Новая заметка", text: ""))
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }
-        .navigationTitle("Notes")
         .padding()
     }
 }
